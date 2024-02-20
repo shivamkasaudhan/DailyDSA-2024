@@ -8,13 +8,16 @@ class hero{
     public:
     string name;
     char lvl;
+    char a;
     int value;
     hero(){
         cout<<"Constructor called"<<endl;
     }
-    hero(int value){
-        cout<<"this -> keyword."<<this<<endl;
+    hero(int value,char a){
         this -> value = value;
+        cout<<"this -> keyword."<<value<<endl;
+        this -> a = a;
+        cout<<"this -> keyword."<<a<<endl;
     }
     int getRegNo(){
         return regNo;
@@ -24,6 +27,9 @@ class hero{
     }
 };
 int main(){
-    
+    hero r(2,'a');
+    hero s(r);
+
+
     return 0;
 }
