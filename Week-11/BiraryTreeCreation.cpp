@@ -52,6 +52,33 @@ void levelOrderTraversal(node* root){
         
     }
 }
+//building tree by lvl order 
+void lvlOrderBuild(node* &root){
+    queue<node*>q;
+    cout<<"Enter data for root: ";
+    int data;
+    cin>>data;
+    root = new node(data);
+    q.push(root);
+    while(!q.empty()){
+        node* temp = q.front();
+        q.pop();
+        cout<<"Data for left side: ";
+        int leftData;
+        cin>>leftData;
+        if(leftData != -1){
+            temp -> left = new node(leftData);
+            q.push(temp->left);
+        }
+        cout<<"Data for right side: ";
+        int rightData;
+        cin>>rightData;
+        if(rightData != -1){
+            temp -> right = new node(rightData);
+            q.push(temp->right);
+        }
+    }
+}
 void inorder(node* root){
     if(root==NULL){
         return ;
@@ -79,15 +106,18 @@ void postorder(node* root){
 
 int main(){
     node* root = NULL;
+    lvlOrderBuild(root);
+    /*
     root = buildTree(root);
     //1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
     cout<<"Level order traversal"<<endl;
-    levelOrderTraversal(root);
     cout<<"Inorder :";
     inorder(root);
     cout<<"Preorder :";
     preorder(root);
     cout<<"Postorder :";
-    postorder(root);
+    */
+    // postorder(root); 
+    levelOrderTraversal(root);
     return 0;
 }
